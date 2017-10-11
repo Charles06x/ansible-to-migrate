@@ -1,0 +1,13 @@
+Migrar de CentOS a Ubuntu
+
+Disponemos de un repositorio con un despliegue de LAMP usando Ansible, para este caso específico se usa el sistema operativo CentOS, y requerimos una “migración” para que funcione sobre Ubunto, por tanto debemos:
+
+-A través de un Docker, se montará la imagen de Ubuntu.
+
+-Los host se modifican para que sean funcionales en el sistema operativo, esto debido a que los paquetes difieren en sus nombres según el SO.
+
+	> Para la instalación del web server, se instala el paquete de apache2 y no el httpd, además 	   en este server tabién instalaremos PHP.
+	
+	> Para mySQL, se instala con  sus respectivos requerimientos.
+
+-Ahora, se procede a la modificación de los .yml (main, roles y demás necesarios) para utilizar los comandos correctos, en lugar de yum, usamos apt.

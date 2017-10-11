@@ -4,12 +4,10 @@
 - name: Install http and php etc
   yum: name={{ item }} state=present
   with_items:
-   - httpd
+   - apache2
    - php
    - php-mysql
    - git
-   - libsemanage-python
-   - libselinux-python
 
 - name: insert iptables rule for httpd
   lineinfile: dest=/etc/sysconfig/iptables create=yes state=present regexp="{{ httpd_port }}" insertafter="^:OUTPUT "

@@ -13,10 +13,6 @@
 - name: root-password again
   debconf: name='sqlserver' question='sqlserver/root_password_again' value={{'123456'}} vtype='password'
 
-- name: Configure SELinux to start mysql on any port
-  seboolean: name=mysql_connect_any state=true persistent=yes
-  when: sestatus.rc != 0
-
 - name: Create Mysql configuration file
   template: src=my.cnf.j2 dest=/etc/my.cnf
   notify:
